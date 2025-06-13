@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LightWeave - Interactive Canvas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1a202c 0%, #0a0a10 100%);
+            overflow: hidden;
+            font-family: 'Inter', 'Poppins', sans-serif;
+            cursor: none; /* Hide the default cursor */
+        }
+
+        #canvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .ui-overlay {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .ui-overlay h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 400; /* Slightly bolder for headlines */
+        }
+
+        .ui-overlay p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            max-width: 400px;
+            opacity: 0.75;
+            font-weight: 300; /* Lighter for body text */
+        }
+
+        .cursor-indicator {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 70%, transparent 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+        }
+
+        .cursor-indicator.pulling {
+            background: radial-gradient(circle, rgba(100, 200, 255, 0.8) 0%, rgba(100, 200, 255, 0.2) 70%, transparent 100%);
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <div class="cursor-indicator" id="cursorIndicator"></div>
+    
+    <div class="ui-overlay">
+        <h1>LightWeave</h1>
+        <p>LightWeave is a captivating interactive canvas that responds to your cursor in real time. Simply open `index.html` in your browser and move your mouse around. Watch how the particles come alive in response.</p>
+    </div>
+
+    <!-- Three.js and Cannon.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/cannon@0.6.2/build/cannon.min.js"></script>
+    <!-- Required for RGBELoader -->
+    <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/RGBELoader.js"></script>
+    
+    <!-- Main application script -->
+    <script src="aether-flow.js"></script>
+</body>
+</html> 
